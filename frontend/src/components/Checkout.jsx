@@ -21,16 +21,16 @@ export default function Checkout() {
   const userProgressCtx = useContext(UserProgressContext);
 
   const {
-    data,
-    isLoading: isSending,
-    error,
-    sendRequest,
-    clearData,
-  } = useHttp(
-    // "http://food-order-app-frontend-eight.vercel.app/api/orders",
-    "http://localhost:3000/orders",
-    requestConfig
-  );
+		data,
+		isLoading: isSending,
+		error,
+		sendRequest,
+		clearData,
+	} = useHttp(
+		// "http://food-order-app-frontend-eight.vercel.app/api/orders",
+		`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/orders`,
+		requestConfig
+	);
 
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,

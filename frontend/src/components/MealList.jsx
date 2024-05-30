@@ -6,15 +6,15 @@ const requestConfig = {};
 
 export default function MealList() {
   const {
-    data: loadedMeals,
-    isLoading,
-    error,
-  } = useHttp(
-    // "http://food-order-app-frontend-eight.vercel.app/api/meals",
-    "http://localhost:3000/api/meals",
-    requestConfig,
-    []
-  );
+		data: loadedMeals,
+		isLoading,
+		error,
+	} = useHttp(
+		// "http://food-order-app-frontend-eight.vercel.app/api/meals",
+		`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/meals`,
+		requestConfig,
+		[]
+	);
 
   if (isLoading) {
     return <p className="center">Fetching meals...</p>;

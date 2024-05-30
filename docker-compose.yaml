@@ -1,0 +1,32 @@
+services:
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: food
+  backend:
+    image: maheshkunde2201/food-backend
+    restart: always
+    ports:
+      - 3001:3000
+    depends_on:
+      - mongo
+    environment:
+      MONGOURL: mongodb://root:food@mongo:27017
+  frontend:
+    image: maheshkunde2201/food-frontend
+    restart: always
+    ports:
+      - 5173:5173
+    depends_on:
+      - backend
+    environment:
+      VITE_REACT_APP_BACKEND_URL: http://localhost:3001
+
+volumes:
+  mongo-data:

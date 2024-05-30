@@ -12,22 +12,22 @@ export default function MealItem({ meal }) {
   }
 
   return (
-    <li className="meal">
-      <article>
-        <img
-          // src={`http://food-order-app-frontend-eight.vercel.app/api/${meal.image}`}
-          src={`http://localhost:3000/${meal.image}`}
-          alt={meal.name}
-        />
-        <div>
-          <h3>{meal.name}</h3>
-          <p className="meal-price">{currencyFormatter.format(meal.price)}</p>
-          <p className="meal-description">{meal.description}</p>
-        </div>
-        <p className="meal-actions">
-          <Button onClick={handleAddMealToCart}>Add to Cart</Button>
-        </p>
-      </article>
-    </li>
-  );
+		<li className="meal">
+			<article>
+				<img
+					// src={`http://food-order-app-frontend-eight.vercel.app/api/${meal.image}`}
+					src={`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/${meal.image}`}
+					alt={meal.name}
+				/>
+				<div>
+					<h3>{meal.name}</h3>
+					<p className="meal-price">{currencyFormatter.format(meal.price)}</p>
+					<p className="meal-description">{meal.description}</p>
+				</div>
+				<p className="meal-actions">
+					<Button onClick={handleAddMealToCart}>Add to Cart</Button>
+				</p>
+			</article>
+		</li>
+	);
 }
